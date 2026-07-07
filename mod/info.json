@@ -1,0 +1,12 @@
+﻿{
+    "name":  "NoDeadTrees",
+    "version":  "1.0.0",
+    "factorio_version":  "2.0",
+    "title":  "NoDeadTrees",
+    "author":  "Lith",
+    "description":  "Trees planted by the player or via tree seed are protected from pollution-based death and show a protected indicator in their hover description.",
+    "dependencies":  [
+                         "base",
+                         "? space-age"
+                     ]
+}
