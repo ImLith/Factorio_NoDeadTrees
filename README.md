@@ -1,22 +1,52 @@
-# No Dead Trees
+# No Dead Trees 🌳
 
-Keep your carefully planted trees green and beautiful!
+A small Factorio QoL mod that keeps player-planted trees green while preserving their natural pollution absorption.
 
-In Space Age, trees planted from tree seeds behave like natural trees. They grow, absorb pollution, and help clean the environment. However, heavy pollution can eventually cause them to lose their leaves and look dead.
+## About
 
-This mod prevents that visual change by automatically restoring player-planted trees when they start losing their leaves, while allowing them to continue absorbing pollution normally.
+In Space Age, trees planted using tree seeds behave like normal trees:
+- They grow naturally
+- They absorb pollution
+- They help clean the environment
+
+However, pollution eventually causes them to lose their leaves and become dead-looking.
+
+No Dead Trees prevents this visual change by refreshing protected trees before they become bare, while keeping their normal pollution absorption behavior.
 
 ## Features
-- 🌳 Protects player-planted trees from losing their leaves due to pollution
-- 🌱 Trees continue absorbing pollution just like naturally generated trees
-- 🍃 Automatically restores trees when they enter damaged visual stages
-- 💾 Protection persists across save reloads
-- ⚙️ Lightweight design with minimal performance impact
 
-This mod does not disable pollution and does not remove the environmental mechanics of trees.
+✅ Player-planted trees remain green  
+✅ Trees continue absorbing pollution normally  
+✅ Persistent protection across save reloads  
+✅ Lightweight periodic checking  
+✅ Configurable check interval  
+✅ Optional debug logging  
+✅ Localization support  
 
-Your trees still contribute to pollution absorption — they simply stay green and alive-looking.
+## How it works
 
-Perfect for megabases, city builds, gardens, parks, and players who want a greener Nauvis without using console commands.
+The mod tracks trees planted by the player.
 
-Enjoy a cleaner-looking factory world with living forests and beautiful green spaces! 🌳
+Every configured interval, tracked trees are checked. If pollution causes the tree to enter a damaged visual stage, it is refreshed back to its healthy state.
+
+The tree is not replaced with a decorative object and continues functioning as a normal tree.
+
+## Configuration
+
+### Tree Check Interval
+
+Controls how often protected trees are checked.
+
+### Debug Logging
+
+Enables additional information useful for troubleshooting.
+
+## Known limitations
+
+- Currently only protects player-planted trees.
+- Naturally generated trees are unaffected.
+- Trees are refreshed visually when pollution removes their leaves.
+
+## License
+
+MIT License

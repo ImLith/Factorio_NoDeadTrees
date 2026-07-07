@@ -76,7 +76,13 @@ else {
 $newVersion = ($numbers -join '.')
 
 $info.version = $newVersion
-$info | ConvertTo-Json -Depth 10 | Set-Content -Path $infoPath -Encoding UTF8
+$json = $info | ConvertTo-Json -Depth 10
+
+# Keep JSON readable (do not escape characters like >)
+$json = $json -replace '\\u003e', '>'
+$json = $json -replace '\\u003c', '<'
+
+Set-Content -Path $infoPath -Value $json -Encoding UTF8
 
 
 $archiveName = "${modName}_$newVersion.zip"
@@ -103,12 +109,6 @@ Copy-Item `
   -Recurse `
   -Force
 
-
-#
-# Create ZIP using 7-Zip
-# Required because Compress-Archive creates Windows-style paths
-#
-
 $sevenZipCandidates = @(
     "${env:ProgramFiles}\7-Zip\7z.exe",
     "${env:ProgramFiles(x86)}\7-Zip\7z.exe"
@@ -122,7 +122,6 @@ if (-not $sevenZip) {
     throw "7-Zip was not found. Install 7-Zip."
 }
 
-
 Push-Location $distRoot
 
 & $sevenZip a `
@@ -132,9 +131,7 @@ Push-Location $distRoot
 
 Pop-Location
 
-
 Remove-Item $packageRoot -Recurse -Force
-
 
 Write-Host "Created $archivePath"
 Write-Host "Updated version to $newVersion"

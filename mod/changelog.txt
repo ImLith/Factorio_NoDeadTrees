@@ -1,0 +1,9 @@
+Version: 1.0.5
+--------------------
+- Initial release of No Dead Trees
+- Prevents player-planted tree-seed trees from losing their leaves due to pollution
+- Trees continue absorbing pollution normally
+- Added persistent tree tracking across save reloads
+- Added configurable check interval
+- Added optional debug logging
+- Added localization support

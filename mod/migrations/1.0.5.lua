@@ -1,0 +1,2 @@
+-- No migration required.
+-- This file exists to establish migration support for future versions.
