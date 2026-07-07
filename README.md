@@ -1,12 +1,22 @@
-# NoDeadTrees
+# No Dead Trees
 
-A lightweight Factorio mod for the Space Age DLC that protects trees planted by the player or by the tree seed item from pollution-based death.
+Keep your carefully planted trees green and beautiful!
 
-## What it does
-- Marks newly planted trees as protected.
-- Prevents pollution damage from killing those protected trees.
-- Adds a visible description hint in the hover information so protected trees show as "Protected from pollution".
+In Space Age, trees planted from tree seeds behave like natural trees. They grow, absorb pollution, and help clean the environment. However, heavy pollution can eventually cause them to lose their leaves and look dead.
 
-## Notes
-- This is an early prototype focused on the requested behavior.
-- Ordinary trees keep their normal behavior.
+This mod prevents that visual change by automatically restoring player-planted trees when they start losing their leaves, while allowing them to continue absorbing pollution normally.
+
+## Features
+- 🌳 Protects player-planted trees from losing their leaves due to pollution
+- 🌱 Trees continue absorbing pollution just like naturally generated trees
+- 🍃 Automatically restores trees when they enter damaged visual stages
+- 💾 Protection persists across save reloads
+- ⚙️ Lightweight design with minimal performance impact
+
+This mod does not disable pollution and does not remove the environmental mechanics of trees.
+
+Your trees still contribute to pollution absorption — they simply stay green and alive-looking.
+
+Perfect for megabases, city builds, gardens, parks, and players who want a greener Nauvis without using console commands.
+
+Enjoy a cleaner-looking factory world with living forests and beautiful green spaces! 🌳
