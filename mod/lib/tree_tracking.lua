@@ -69,45 +69,32 @@ function tree_tracking.refresh_trees()
         return
     end
 
+    local refreshed = 0
+    local removed = 0
+
     for i = #trees, 1, -1 do
         local tree = trees[i]
 
         if not tree or not tree.valid then
             table.remove(trees, i)
-            utils.log("Removed invalid tree")
+            removed = removed + 1
         else
             local stage = tree.tree_stage_index
 
             if stage and stage > 1 then
-                utils.log("Refreshing damaged tree")
-
-                local surface = tree.surface
-                local position = tree.position
-                local name = tree.name
-                local force = tree.force
-
-                tree.destroy()
-
-                local new_tree = surface.create_entity {
-                    name = name,
-                    position = position,
-                    force = force,
-                    raise_built = false
-                }
-
-                if new_tree then
-                    trees[i] = new_tree
-                    utils.log("Tree refreshed successfully")
-                else
-                    table.remove(trees, i)
-                    utils.log("FAILED to recreate tree")
-                end
+                tree.tree_stage_index = 1
+                refreshed = refreshed + 1
             end
         end
     end
 
-    storage.no_dead_trees_state = storage.no_dead_trees_state or {}
-    storage.no_dead_trees_state.next_refresh_tick = game.ticks_played + get_check_interval()
+    if refreshed > 0 then
+        utils.log("Restored " .. refreshed .. " damaged trees")
+    end
+
+    if removed > 0 then
+        utils.log("Removed " .. removed .. " invalid trees from tracking")
+    end
 end
 
 function tree_tracking.register_events()
@@ -134,6 +121,9 @@ function tree_tracking.register_events()
 
         if game.ticks_played >= storage.no_dead_trees_state.next_refresh_tick then
             tree_tracking.refresh_trees()
+
+            storage.no_dead_trees_state.next_refresh_tick =
+                game.ticks_played + get_check_interval()
         end
     end)
 end

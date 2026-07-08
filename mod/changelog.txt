@@ -1,4 +1,4 @@
-Version: 1.0.5
+Version: 1.1.0
 --------------------
 - Initial release of No Dead Trees
 - Prevents player-planted tree-seed trees from losing their leaves due to pollution
