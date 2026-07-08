@@ -82,7 +82,11 @@ $json = $info | ConvertTo-Json -Depth 10
 $json = $json -replace '\\u003e', '>'
 $json = $json -replace '\\u003c', '<'
 
-Set-Content -Path $infoPath -Value $json -Encoding UTF8
+[System.IO.File]::WriteAllText(
+    $infoPath,
+    $json,
+    (New-Object System.Text.UTF8Encoding($false))
+)
 
 
 $archiveName = "${modName}_$newVersion.zip"
